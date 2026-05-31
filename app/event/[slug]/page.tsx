@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getEventBySlug } from "@/data/events";
+import { events, getEventBySlug } from "@/data/events";
+
+export function generateStaticParams() {
+  return events.map((event) => ({ slug: event.slug }));
+}
 
 type EventDetailPageProps = {
   params: Promise<{ slug: string }>;

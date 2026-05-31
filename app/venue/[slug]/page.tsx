@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getVenueBySlug } from "@/data/venues";
+import { venues, getVenueBySlug } from "@/data/venues";
+
+export function generateStaticParams() {
+  return venues.map((venue) => ({ slug: venue.slug }));
+}
 
 type VenueDetailPageProps = {
   params: Promise<{ slug: string }>;

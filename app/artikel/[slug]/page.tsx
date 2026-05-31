@@ -4,6 +4,10 @@ import { notFound } from "next/navigation";
 
 import { articles, getArticleBySlug } from "@/data/articles";
 
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
 type ArticleDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
