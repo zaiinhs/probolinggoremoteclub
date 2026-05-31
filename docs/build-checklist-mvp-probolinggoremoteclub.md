@@ -2,11 +2,11 @@
 
 ## Tujuan
 
-Checklist ini menjadi acuan implementasi website `probolinggoremoteclub.web.id` untuk fase MVP informatif.
+Checklist ini menjadi acuan implementasi website `probolinggoremoteclub.pages.dev` untuk fase MVP informatif.
 
 ## Keputusan Dasar
 
-1. Domain: `probolinggoremoteclub.web.id`
+1. Domain: `probolinggoremoteclub.pages.dev`
 2. Email komunitas: `zainalabidinhsc@gmail.com`
 3. Fase saat ini: `Website informatif`
 4. Dashboard admin: `Nanti`
@@ -95,7 +95,7 @@ Checklist ini menjadi acuan implementasi website `probolinggoremoteclub.web.id` 
 
 - [ ] Buat repository project
 - [ ] Deploy ke Vercel
-- [ ] Hubungkan domain `probolinggoremoteclub.web.id`
+- [ ] Hubungkan domain `probolinggoremoteclub.pages.dev`
 - [ ] Aktifkan HTTPS
 - [ ] Uji seluruh link publik
 - [ ] Uji tampilan mobile

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Probolinggo Remote Club",
   shortName: "PRC",
-  domain: "probolinggoremoteclub.web.id",
+  domain: "probolinggoremoteclub.pages.dev",
   email: "zainalabidinhsc@gmail.com",
   description:
     "Komunitas non-profit dan gratis untuk pekerja remote di Probolinggo. Tempat berkumpul, coworking, networking, dan bertumbuh bersama.",

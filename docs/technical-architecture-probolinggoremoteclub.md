@@ -2,7 +2,7 @@
 
 ## Tujuan Dokumen
 
-Dokumen ini menetapkan keputusan teknis awal untuk membangun website `probolinggoremoteclub.web.id` berdasarkan kebutuhan saat ini:
+Dokumen ini menetapkan keputusan teknis awal untuk membangun website `probolinggoremoteclub.pages.dev` berdasarkan kebutuhan saat ini:
 
 1. Website tahap awal bersifat informatif.
 2. Fokus utama adalah publikasi komunitas, bukan operasional admin penuh.
@@ -14,7 +14,7 @@ Dokumen ini menetapkan keputusan teknis awal untuk membangun website `probolingg
 
 ### Domain
 
-- Domain utama: `probolinggoremoteclub.web.id`
+- Domain utama: `probolinggoremoteclub.pages.dev`
 
 ### Email Komunitas
 
@@ -274,7 +274,7 @@ Alasannya:
 
 Setelah website siap:
 
-1. Hubungkan domain `probolinggoremoteclub.web.id` ke Vercel.
+1. Hubungkan domain `probolinggoremoteclub.pages.dev` ke Vercel.
 2. Aktifkan HTTPS.
 3. Pastikan redirect root domain berjalan benar.
 
