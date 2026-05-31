@@ -9,7 +9,16 @@ export const metadata: Metadata = {
   description: "Temukan kafe dan tempat yang cocok untuk kerja remote dan meetup komunitas di Probolinggo.",
 };
 
+function parseWifiMbps(wifiInfo: string): number {
+  const match = wifiInfo.match(/±(\d+)/);
+  return match ? parseInt(match[1], 10) : 0;
+}
+
 export default function VenuePage() {
+  const sortedVenues = [...venues].sort(
+    (a, b) => parseWifiMbps(b.wifiInfo) - parseWifiMbps(a.wifiInfo),
+  );
+
   return (
     <>
       <PageHero
@@ -27,7 +36,7 @@ export default function VenuePage() {
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {venues.map((venue) => (
+          {sortedVenues.map((venue) => (
             <VenueCard key={venue.slug} venue={venue} />
           ))}
         </div>

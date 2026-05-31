@@ -84,6 +84,11 @@ export default async function VenueDetailPage({ params }: VenueDetailPageProps) 
             </div>
 
             <div>
+              <h2 className="theme-heading text-2xl font-semibold">Kecepatan WiFi</h2>
+              <p className="theme-copy mt-4 text-sm leading-7">{venue.wifiInfo}</p>
+            </div>
+
+            <div>
               <h2 className="theme-heading text-2xl font-semibold">Cocok untuk Meetup?</h2>
               <p className="theme-copy mt-4 text-sm leading-7">
                 {venue.suitableForMeetup

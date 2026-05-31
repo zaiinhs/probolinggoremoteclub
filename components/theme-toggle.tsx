@@ -1,25 +1,21 @@
 "use client";
 
 import { LaptopMinimal, MoonStar, SunMedium } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import { siteConfig } from "@/data/site";
 
 type ThemeMode = "light" | "dark" | "system";
 
-const themeOptions: ThemeMode[] = ["light", "dark", "system"];
+const storageKey = `${siteConfig.shortName.toLowerCase()}-theme`;
+const themeEvent = "prc-theme-change";
 
-function getThemeMeta(mode: ThemeMode) {
-  if (mode === "light") {
-    return { icon: SunMedium, label: "Light" };
-  }
-
-  if (mode === "dark") {
-    return { icon: MoonStar, label: "Dark" };
-  }
-
-  return { icon: LaptopMinimal, label: "System" };
-}
+const themeOptions: { mode: ThemeMode; icon: LucideIcon; label: string }[] = [
+  { mode: "light", icon: SunMedium, label: "Terang" },
+  { mode: "dark", icon: MoonStar, label: "Gelap" },
+  { mode: "system", icon: LaptopMinimal, label: "Sistem" },
+];
 
 function applyTheme(mode: ThemeMode) {
   const root = document.documentElement;
@@ -33,24 +29,32 @@ function applyTheme(mode: ThemeMode) {
   root.classList.remove("light", "dark");
   root.classList.add(resolved);
   root.dataset.themeMode = mode;
-  window.localStorage.setItem(`${siteConfig.shortName.toLowerCase()}-theme`, mode);
+  window.localStorage.setItem(storageKey, mode);
+  window.dispatchEvent(new Event(themeEvent));
+}
+
+function subscribe(callback: () => void) {
+  window.addEventListener("storage", callback);
+  window.addEventListener(themeEvent, callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener(themeEvent, callback);
+  };
+}
+
+function getSnapshot(): ThemeMode {
+  return (window.localStorage.getItem(storageKey) as ThemeMode | null) || "system";
+}
+
+function getServerSnapshot(): ThemeMode {
+  return "system";
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<ThemeMode>(() => {
-    if (typeof window === "undefined") {
-      return "system";
-    }
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
-    return (
-      (window.localStorage.getItem(`${siteConfig.shortName.toLowerCase()}-theme`) as ThemeMode | null) ||
-      "system"
-    );
-  });
-
+  // Keep "system" mode in sync when the OS preference changes.
   useEffect(() => {
-    applyTheme(theme);
-
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = () => {
       const currentMode = (document.documentElement.dataset.themeMode as ThemeMode | undefined) || "system";
@@ -58,41 +62,28 @@ export function ThemeToggle() {
         applyTheme("system");
       }
     };
-
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);
-  }, [theme]);
-
-  const currentTheme = getThemeMeta(theme);
-  const CurrentIcon = currentTheme.icon;
+  }, []);
 
   return (
-    <div className="theme-toggle-wrap" aria-label="Theme switcher">
-      <span className="theme-toggle-label">Theme</span>
-      <label className="theme-select-shell">
-        <span className="theme-select-icon" aria-hidden="true">
-          <CurrentIcon size={14} strokeWidth={2.1} />
-        </span>
-        <span className="theme-select-current" aria-hidden="true">
-          {currentTheme.label}
-        </span>
-        <select
-          aria-label="Pilih tema"
-          value={theme}
-          onChange={(event) => {
-            const nextTheme = event.target.value as ThemeMode;
-            setTheme(nextTheme);
-            applyTheme(nextTheme);
-          }}
-          className="theme-select"
-        >
-          {themeOptions.map((option) => (
-            <option key={option} value={option}>
-              {option === "light" ? "Light" : option === "dark" ? "Dark" : "System"}
-            </option>
-          ))}
-        </select>
-      </label>
+    <div className="theme-seg" role="group" aria-label="Pilih tema">
+      {themeOptions.map(({ mode, icon: Icon, label }) => {
+        const active = theme === mode;
+        return (
+          <button
+            key={mode}
+            type="button"
+            onClick={() => applyTheme(mode)}
+            className={`theme-seg-btn ${active ? "theme-seg-btn-active" : ""}`}
+            aria-pressed={active}
+            aria-label={`Tema ${label}`}
+            title={label}
+          >
+            <Icon size={16} strokeWidth={2.3} />
+          </button>
+        );
+      })}
     </div>
   );
 }

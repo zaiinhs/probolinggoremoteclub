@@ -26,8 +26,8 @@ export const events: EventItem[] = [
     status: "upcoming",
     dateLabel: "Sabtu, 24 Mei 2026",
     timeLabel: "09.00 - 13.00 WIB",
-    location: "Mayangan, Kota Probolinggo",
-    venueName: "Dummy Coffee Mayangan",
+    location: "Mayangan, Kota Probolinggo (Simposium Coffee)",
+    venueName: "Simposium Coffee",
     agenda: [
       "Check-in dan perkenalan ringan",
       "Focused work session",
@@ -48,8 +48,8 @@ export const events: EventItem[] = [
     status: "upcoming",
     dateLabel: "Minggu, 7 Juni 2026",
     timeLabel: "15.30 - 17.30 WIB",
-    location: "Kanigaran, Kota Probolinggo",
-    venueName: "Ruang Kumpul Bayuangga",
+    location: "Mayangan, Kota Probolinggo (Oikia Cafe & Eatery)",
+    venueName: "Oikia Cafe & Eatery",
     agenda: [
       "Opening dan cerita singkat komunitas",
       "Sesi perkenalan peserta",
@@ -70,8 +70,8 @@ export const events: EventItem[] = [
     status: "past",
     dateLabel: "Sabtu, 26 April 2026",
     timeLabel: "10.00 - 12.00 WIB",
-    location: "Probolinggo Barat",
-    venueName: "Studio Kolaborasi Pesisir",
+    location: "Mayangan, Kota Probolinggo (Pinus Coffee)",
+    venueName: "Pinus Coffee",
     agenda: [
       "Opening dan pengantar topik",
       "Sesi sharing pengalaman peserta",

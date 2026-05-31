@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 
 import { siteConfig } from "@/data/site";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -12,67 +13,70 @@ export function SiteHeader() {
   const pathname = usePathname();
 
   return (
-    <header className="theme-header sticky top-0 z-50 border-b backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex min-w-0 items-center gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[1.15rem] bg-[linear-gradient(135deg,var(--prc-sky),var(--prc-leaf),var(--prc-grape))] text-sm font-black tracking-[0.18em] text-slate-950 shadow-[0_10px_30px_rgba(47,109,166,0.28)]">
+    <header className="theme-header sticky top-0 z-50 border-b-2 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:gap-6 lg:px-8">
+        <Link href="/" className="group flex shrink-0 items-center gap-2.5">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border-2 border-[var(--ink)] bg-[var(--prc-gold)] text-sm font-extrabold tracking-[0.04em] text-[#15110c] shadow-[3px_3px_0_var(--shadow-color)] transition group-hover:-rotate-6">
             PRC
           </div>
-          <div className="min-w-0">
-            <div className="theme-heading truncate text-[0.78rem] font-black uppercase tracking-[0.24em] sm:text-sm">
+          <div className="leading-tight">
+            <div className="theme-heading text-[0.82rem] font-extrabold uppercase leading-none tracking-[0.12em] sm:text-sm">
               Probolinggo
             </div>
-            <div className="theme-copy flex items-center gap-2 truncate text-sm transition group-hover:text-[var(--foreground)]">
+            <div className="theme-copy mt-1 flex items-center gap-1.5 whitespace-nowrap text-[0.8rem] sm:text-sm">
               Remote Club
-              <span className="hidden rounded-full border border-[var(--border)] px-2 py-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[var(--muted)] sm:inline-flex">
-                Free
+              <span className="hidden rounded-full border-2 border-[var(--ink)] bg-[var(--prc-leaf)] px-2 py-0.5 text-[0.58rem] font-extrabold uppercase leading-none tracking-[0.1em] text-[#15110c] sm:inline-flex">
+                Gratis
               </span>
             </div>
           </div>
         </Link>
 
-        <div className="flex flex-1 items-center justify-end lg:justify-between lg:pl-8">
-          <nav className="hidden items-center lg:flex">
-            <div className="theme-nav-shell flex items-center gap-1">
-              {siteConfig.navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`theme-nav-link ${
-                    pathname === item.href ? "theme-nav-link-active" : ""
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-          </nav>
+        <nav className="hidden lg:flex">
+          <div className="theme-nav-shell flex items-center gap-0.5">
+            {siteConfig.navigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`theme-nav-link ${
+                  pathname === item.href ? "theme-nav-link-active" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </nav>
 
-          <div className="flex items-center gap-2 md:gap-3">
-            <ThemeToggle />
-            <Link href="/gabung" className="btn-primary header-cta hidden lg:inline-flex">
-              Gabung Komunitas
+        <div className="flex shrink-0 items-center gap-2 lg:gap-3">
+          <ThemeToggle />
+          <div className="hidden lg:block">
+            <Link href="/gabung" className="btn-primary header-cta whitespace-nowrap">
+              Gabung →
             </Link>
+          </div>
+          <div className="lg:hidden">
             <button
               type="button"
-              className="theme-icon-button inline-flex lg:hidden"
+              className="theme-icon-button inline-flex"
               aria-label={mobileMenuOpen ? "Tutup menu" : "Buka menu"}
+              aria-expanded={mobileMenuOpen}
               onClick={() => setMobileMenuOpen((value) => !value)}
             >
-              {mobileMenuOpen ? "Tutup" : "Menu"}
+              {mobileMenuOpen ? <X size={20} strokeWidth={2.4} /> : <Menu size={20} strokeWidth={2.4} />}
             </button>
           </div>
         </div>
       </div>
 
       {mobileMenuOpen ? (
-        <div className="border-t border-[var(--border)] lg:hidden">
+        <div className="border-t-2 border-[var(--ink)] lg:hidden">
           <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6">
             <div className="theme-mobile-panel flex flex-col gap-3">
               <div className="theme-mobile-heading-row">
                 <div>
-                  <p className="theme-heading text-sm font-semibold">Navigasi</p>
-                  <p className="theme-muted text-xs">Pilih halaman yang ingin kamu buka</p>
+                  <p className="theme-heading text-sm font-extrabold">Navigasi</p>
+                  <p className="theme-muted text-xs">Pilih halaman yang mau kamu buka</p>
                 </div>
               </div>
               <nav className="grid gap-2">
@@ -90,7 +94,7 @@ export function SiteHeader() {
                 ))}
               </nav>
               <Link href="/gabung" className="btn-primary w-full" onClick={() => setMobileMenuOpen(false)}>
-                Gabung Komunitas
+                Gabung Komunitas →
               </Link>
             </div>
           </div>
