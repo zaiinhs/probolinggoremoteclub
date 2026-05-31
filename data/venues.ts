@@ -7,6 +7,7 @@ export type VenueItem = {
   address: string;
   hours: string;
   facilities: string[];
+  wifiMbps: number;
   wifiInfo: string;
   suitableForMeetup: boolean;
   mapsUrl: string;
@@ -28,6 +29,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Dr. Moch Saleh No.12, Sukabumi, Kec. Mayangan, Kota Probolinggo 67219",
     hours: "09.00 - 21.30 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Outdoor", "Makanan", "Parkir"],
+    wifiMbps: 10,
     wifiInfo: "⬇⬆ ±10 Mbps — Cukup untuk browsing, email, dan chatting. Kurang ideal untuk video call berat.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Simposium+Coffee,+Jl.+Dr.+Moch+Saleh+No.12,+Probolinggo",
@@ -47,6 +49,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Suyoso No.39, Sukabumi, Kec. Mayangan, Kota Probolinggo",
     hours: "10.00 - 21.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Outdoor", "VIP Room", "Makanan", "Parkir", "Mushola"],
+    wifiMbps: 15,
     wifiInfo: "⬇⬆ ±15 Mbps — Lumayan kencang. Cocok untuk browsing, streaming, dan video call sesekali.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Oikia+Cafe+Eatery,+Jl.+Suyoso+No.39,+Probolinggo",
@@ -66,6 +69,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Raya Panglima Sudirman No.237, Jati, Kec. Mayangan, Kota Probolinggo",
     hours: "09.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Makanan", "Parkir"],
+    wifiMbps: 5,
     wifiInfo: "⬇⬆ ±5 Mbps — Lumayan untuk browsing dan chatting. Kurang stabil untuk video call.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Quatro+Coffee+Eatery,+Jl.+Panglima+Sudirman+No.237,+Probolinggo",
@@ -85,6 +89,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Suroyo No.9, Tisnonegaran, Kec. Kanigaran, Kota Probolinggo",
     hours: "11.00 - 22.45 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Makanan", "Parkir"],
+    wifiMbps: 30,
     wifiInfo: "⬇⬆ ±30 Mbps — Sangat kencang. Cocok untuk video conference, streaming, dan upload/download file besar.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pesenkopi+Plus,+Jl.+Suroyo+No.9,+Probolinggo",
@@ -104,6 +109,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Suroyo, Tisnonegaran, Kec. Kanigaran, Kota Probolinggo",
     hours: "08.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Indoor", "Makanan", "Takeaway"],
+    wifiMbps: 25,
     wifiInfo: "⬇⬆ ±25 Mbps — Kencang dan stabil. Cocok untuk browsing cepat, video call, dan streaming lancar.",
     suitableForMeetup: false,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kopi+Kenangan,+Jl.+Suroyo,+Probolinggo",
@@ -123,6 +129,7 @@ export const venues: VenueItem[] = [
     address: "Jl. WR. Supratman No.28A, Jati, Kec. Mayangan, Kota Probolinggo 67217",
     hours: "10.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Outdoor", "Board Game", "Makanan", "Parkir"],
+    wifiMbps: 10,
     wifiInfo: "⬇⬆ ±10 Mbps — Cukup stabil. Cocok untuk browsing, streaming ringan, dan kerja ringan.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pinus+Coffee,+Jl.+WR.+Supratman+No.28A,+Probolinggo",
@@ -142,6 +149,7 @@ export const venues: VenueItem[] = [
     address: "Jl. Hayam Wuruk, Jati, Kec. Mayangan, Kota Probolinggo 67217",
     hours: "09.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Makanan", "Parkir", "Mushola"],
+    wifiMbps: 20,
     wifiInfo: "⬇⬆ ±20 Mbps — Kencang dan stabil. Cocok untuk video call, streaming, dan kerja remote tanpa hambatan.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Join+Coffetaria,+Jl.+Hayam+Wuruk,+Probolinggo",
@@ -161,6 +169,7 @@ export const venues: VenueItem[] = [
     address: "Jl. D.I. Panjaitan No.90, Sukabumi, Kec. Mayangan, Kota Probolinggo 67219",
     hours: "07.00 - 21.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Makanan", "Parkir"],
+    wifiMbps: 15,
     wifiInfo: "⬇⬆ ±15 Mbps — Lumayan kencang. Cocok untuk browsing dan streaming, cukup untuk kerja ringan.",
     suitableForMeetup: false,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Daily+Dose+Coffee,+Jl.+Panjaitan+No.90,+Probolinggo",
@@ -180,6 +189,7 @@ export const venues: VenueItem[] = [
     address: "Gg. Nanas No.4-2, Jrebeng Wetan, Kec. Kedopok, Kota Probolinggo",
     hours: "10.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Indoor", "Outdoor", "Makanan", "Parkir"],
+    wifiMbps: 3,
     wifiInfo: "⬇⬆ ±3 Mbps — Lumayan untuk browsing dan chat saja. Kurang cocok untuk video call atau streaming.",
     suitableForMeetup: false,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Jong+Java+Coffee,+Gg.+Nanas+No.4-2,+Jrebeng+Wetan,+Probolinggo",
@@ -199,6 +209,7 @@ export const venues: VenueItem[] = [
     address: "Jl. R.A. Kartini No.88, Sukabumi, Kec. Mayangan, Kota Probolinggo",
     hours: "08.00 - 22.00 WIB",
     facilities: ["Wi-Fi", "Colokan", "Indoor", "Makanan", "Parkir"],
+    wifiMbps: 8,
     wifiInfo: "⬇⬆ ±8 Mbps — Cukup untuk browsing dan email. Lumayan untuk kerja ringan, kurang ideal untuk video call.",
     suitableForMeetup: true,
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=ALIBI+CAFE,+Jl.+R.A.+Kartini+No.88,+Probolinggo",

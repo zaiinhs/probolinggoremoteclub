@@ -8,7 +8,7 @@ import { venues } from "@/data/venues";
 
 export default function HomePage() {
   const upcomingEvents = events.filter((event) => event.status === "upcoming").slice(0, 2);
-  const featuredVenues = venues.filter((venue) => venue.featured).slice(0, 2);
+  const featuredVenues = [...venues].sort((a, b) => b.wifiMbps - a.wifiMbps).slice(0, 2);
   const latestArticles = articles.slice(0, 2);
 
   return (
@@ -128,12 +128,13 @@ export default function HomePage() {
       <section className="section-shell py-16 lg:py-20">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
           <div className="max-w-2xl">
-            <span className="sticker sticker-leaf">☕ Venue remote-friendly</span>
+            <span className="sticker sticker-leaf">📶 WiFi paling kencang</span>
             <h2 className="theme-heading mt-4 text-3xl font-extrabold sm:text-4xl">
-              Tempat ngadem &amp; fokus di Probolinggo.
+              Venue dengan internet paling ngebut.
             </h2>
             <p className="theme-copy mt-4 text-base leading-8">
-              Kami bantu kamu nemu tempat yang nyaman buat kerja remote atau meetup komunitas.
+              Ini dia tempat kerja remote di Probolinggo dengan WiFi paling kencang — aman buat video call,
+              upload file, sampai streaming tanpa lemot.
             </p>
           </div>
           <Link href="/venue" className="btn-secondary">
