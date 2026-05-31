@@ -5,6 +5,8 @@ import { events } from "@/data/events";
 import { siteConfig } from "@/data/site";
 import { venues } from "@/data/venues";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${siteConfig.domain}`;
 
