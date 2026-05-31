@@ -5,9 +5,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 2026",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 2026",
     "lint": "eslint"
   },
   "keywords": [],
