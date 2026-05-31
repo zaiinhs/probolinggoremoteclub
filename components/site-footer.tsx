@@ -64,7 +64,17 @@ export function SiteFooter() {
       <div className="border-t-2 border-[var(--footer-copy)]/30">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-5 text-xs text-[var(--footer-copy)] sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© {new Date().getFullYear()} Probolinggo Remote Club. Semua hak santai.</p>
-          <p>Dibikin dengan 💛 dari Probolinggo</p>
+          <p className="flex items-center gap-1">
+            <a
+              href="https://github.com/zaiinhs/probolinggoremoteclub"
+              target="_blank"
+              rel="noreferrer"
+              className="underline transition hover:text-[var(--footer-heading)]"
+            >
+              Open source
+            </a>
+            &nbsp;· Dibikin dengan 💛 dari Probolinggo
+          </p>
         </div>
       </div>
     </footer>
